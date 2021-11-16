@@ -22,6 +22,11 @@
         <li class="nav-item">
           <a href="/contract" class="nav-link" use:active active-class="fw-bold" aria-current="about">Contract</a>
         </li>
+        {#if user}
+          <li class="nav-item">
+            <a href="/chat" class="nav-link" use:active active-class="fw-bold" aria-current="about">Chat</a>
+          </li>
+        {/if}
       </ul>
 
       <div class="d-flex gap-2">

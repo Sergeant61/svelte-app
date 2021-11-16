@@ -5,6 +5,6 @@
   import PublicLayout from "./layouts/PublicLayout.svelte";
 </script>
 
-<Route path="/*">
-  <PublicLayout />
-</Route>
+<!-- <Route path="/*"> -->
+<PublicLayout />
+<!-- </Route> -->
