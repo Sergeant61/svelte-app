@@ -11,8 +11,6 @@ $secondary: #143b68;
 // $light:#f8f9fa;
 // $dark:#343434;
 
-$nevanColor: #848a93;
-$nevanColor2: #8b8cb2;
 $themeCustomRadius: 10px;
 $font-size-base: 0.9rem;
 
@@ -29,10 +27,6 @@ $utilities: (
     ),
   ),
 );
-
-.bg-nevan {
-  background-color: $nevanColor;
-}
 
 .bg-dark-thead {
   background-color: #364b5a !important;
