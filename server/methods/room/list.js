@@ -1,9 +1,9 @@
 import SimpleSchema from 'simpl-schema';
 
 new ValidatedMethod({
-  name: 'unit.list',
+  name: 'room.list',
   mixins: [RoleMixin],
-  roles: ['permissions.unit.read'],
+  roles: ['permissions.room.read'],
   validate: new SimpleSchema({
     options: { type: QueryOptionsSchema, optional: true }
   }).validator(),
@@ -11,6 +11,6 @@ new ValidatedMethod({
     this.unblock();
     const { options } = data
 
-    return FetchByIndex(Units, {}, options, null);
+    return FetchByIndex(Rooms, {}, options, null);
   }
 });

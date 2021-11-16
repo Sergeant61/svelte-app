@@ -3,6 +3,7 @@ Migrations.add({
   name: 'Roller tanımlanıyor ve admin user oluşturuluyor.',
   up: function () {
     Roles.createRole('roles.admin');
+    Roles.createRole('roles.user');
 
     const userId = Accounts.createUser({
       email: 'admin@bordo.io',
