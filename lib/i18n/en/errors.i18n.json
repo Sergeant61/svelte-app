@@ -1,0 +1,6 @@
+{
+  "_locale": "en",
+  "_namespace": "errors",
+
+  "paymentTypeCannotBeNone": "Payment type cannot be none"
+}

@@ -1,0 +1,54 @@
+{
+  "name": "svelte-app",
+  "private": true,
+  "scripts": {
+    "start": "meteor --settings settings-local.json --port 5000",
+    "test": "meteor test --once --driver-package meteortesting:mocha",
+    "test-app": "TEST_WATCH=1 meteor test --full-app --driver-package meteortesting:mocha",
+    "visualize": "meteor --production --extra-packages bundle-visualizer"
+  },
+  "dependencies": {
+    "@babel/runtime": "^7.15.4",
+    "@fortawesome/fontawesome-free": "^5.15.3",
+    "@popperjs/core": "^2.6.0",
+    "@types/meteor": "^1.4.84",
+    "array-query": "^0.1.2",
+    "aws-sdk": "^2.909.0",
+    "bcrypt": "^5.0.1",
+    "body-parser": "^1.19.0",
+    "bootstrap": "^5.0.0-beta3",
+    "chai": "^4.3.4",
+    "meteor-node-stubs": "^1.1.0",
+    "moment": "^2.29.1",
+    "notiflix": "^3.2.2",
+    "popper.js": "^1.16.1",
+    "simpl-schema": "^1.10.2",
+    "slugify": "^1.4.6",
+    "svelte": "3.27.0",
+    "sweetalert2": "^11.1.10"
+  },
+  "meteor": {
+    "mainModule": {
+      "client": "client/main.js"
+    },
+    "testModule": "tests/main.js"
+  },
+  "devDependencies": {
+    "tinro": "^0.6.8"
+  },
+  "svelte:compiler": {
+    "extensions": [
+      "svelte",
+      "html"
+    ],
+    "hydratable": false,
+    "css": false
+  },
+  "nodeModules": {
+    "recompile": {
+      "svelte": [
+        "legacy"
+      ]
+    }
+  }
+}

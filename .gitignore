@@ -1,0 +1,6 @@
+node_modules/
+.vscode/
+tests/screenshots
+tests/videos
+settings-local.json
+server/smtp.js

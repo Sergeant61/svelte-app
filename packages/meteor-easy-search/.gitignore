@@ -1,0 +1,7 @@
+.build*/
+.idea/
+.npm*/
+.build*
+node_modules/
+_site*
+easy-search.iml
