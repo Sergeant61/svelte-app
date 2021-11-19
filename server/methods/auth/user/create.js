@@ -2,15 +2,12 @@ import SimpleSchema from 'simpl-schema';
 
 new ValidatedMethod({
   name: 'user.create',
-  mixins: [RoleMixin],
-  roles: ['permissions.user.create'],
+  // mixins: [RoleMixin],
+  // roles: ['permissions.user.create'],
   validate: new SimpleSchema({
-    personnelId: SimpleSchema.RegEx.Id,
     emailAddress: String,
     password: String,
     profile: { type: Object, blackbox: true },
-    roleIds: Array,
-    'roleIds.$': String
   }).validator(),
   run: function (data) {
     this.unblock();
@@ -22,13 +19,7 @@ new ValidatedMethod({
       profile: profile
     });
 
-    Meteor.users.update({ _id: userId }, {
-      $set: {
-        personnelId: personnelId,
-      }
-    })
-
-    Roles.addUsersToRoles(userId, roleIds, null);
+    Roles.addUsersToRoles(userId, 'roles.user', null);
   }
 });
 

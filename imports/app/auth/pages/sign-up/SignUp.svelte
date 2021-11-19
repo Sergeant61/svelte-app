@@ -13,7 +13,7 @@
     const passwordAgain = event.target.passwordAgain.value;
 
     const obj = {
-      email: emailAddress,
+      emailAddress: emailAddress,
       password: password,
       profile: {
         firstName: firstName,
@@ -21,17 +21,15 @@
       },
     };
 
-    console.log(obj);
-
     Loading.hourglass();
-    Accounts.createUser(obj, function (error, result) {
+    Meteor.call("user.create", obj, function (error,result) {
       Loading.remove();
       if (error) {
         ErrorHandler.show(error);
         return;
       }
 
-      const redirect = router.location.query("redirect");
+      const redirect = router.location.query.get("redirect");
 
       if (redirect) {
         router.goto(redirect);

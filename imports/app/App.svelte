@@ -5,7 +5,7 @@
   import UserRoutes from "./user/UserRoutes.svelte";
 </script>
 
-<div id="app">
+<div id="app" class="vh-100 d-flex flex-column">
   <PublicRoutes />
   <AuthRoutes />
   <UserRoutes />

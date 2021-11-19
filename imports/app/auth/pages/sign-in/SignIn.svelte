@@ -11,7 +11,7 @@
     const password = event.target.password.value;
 
     Loading.hourglass();
-    Meteor.loginWithPassword(emailAddress, password, function (error) {
+    Meteor.loginWithPassword(emailAddress, password, function (error, result) {
       Loading.remove();
       if (error) {
         ErrorHandler.show(error);

@@ -7,7 +7,7 @@
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    const token = router.location.query("token");
+    const token = router.location.query.get("token");
     const password = event.target.password.value;
     const confirmPassword = event.target.confirmPassword.value;
 
