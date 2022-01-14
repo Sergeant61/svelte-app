@@ -14,7 +14,7 @@
     modalElement.addEventListener("hidden.bs.modal", function (event) {});
   });
 
-  const createdRoom = createEventDispatcher();
+  const eventDispatcher = createEventDispatcher();
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -37,7 +37,7 @@
         return;
       }
 
-      createdRoom("createdRoom", result);
+      eventDispatcher("onCreatedRoom", result);
       modal.hide();
       event.target.reset();
     });

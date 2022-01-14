@@ -1,10 +1,13 @@
 <script>
+  import ErrorHandler from "/lib/utils/error-handler/client/error-handler.js";
+  import { Loading } from "notiflix/build/notiflix-loading-aio";
   import { createEventDispatcher } from "svelte";
 
   //* MODALS
-  import RoomCreate from "../../modals/room-create/RoomCreate.svelte";
+  import RoomCreate from "../modals/room-create/RoomCreate.svelte";
 
-  let rooms = [];
+  let rooms = [],
+    selectedRoom;
 
   const getRoom = () => {
     Loading.hourglass();
@@ -24,16 +27,12 @@
     getRoom();
   };
 
+  const eventDispatcher = createEventDispatcher();
+
   const selectRoom = (room) => {
     selectedRoom = room;
-
-    if (selectedRoomSubscribe) {
-      selectedRoomSubscribe.stop();
-    }
-
-    selectedRoomSubscribe = Meteor.subscribe("messages.list", selectedRoom._id);
+    eventDispatcher("onSelectedRoom", room);
   };
-
 </script>
 
 <div class="d-flex mb-2 align-items-center">
@@ -53,5 +52,4 @@
   </div>
 </div>
 
-<RoomCreate on:createdRoom={createdRoom} />
-
+<RoomCreate on:onCreatedRoom={createdRoom} />
