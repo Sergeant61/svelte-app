@@ -11,14 +11,6 @@
   let user = null;
   let selectedRoomSubscribe = null;
 
-  *** if (selectedRoom) {
-    if (selectedRoomSubscribe) {
-      selectedRoomSubscribe.stop();
-    }
-
-    selectedRoomSubscribe = Meteor.subscribe("messages.list", selectedRoom._id);
-  }
-
   const sendMessage = () => {
     const obj = { message: { text: text, roomId: selectedRoom._id } };
 
@@ -43,14 +35,28 @@
   };
 
   onDestroy(() => {
-    if (selectedRoomSubscribe) {
-      selectedRoomSubscribe.stop();
-    }
+    selectedRoomSubscribe?.stop();
   });
 
   $m: {
     user = Meteor.user();
     messages = Messages.find({}).fetch();
+  }
+
+  const obj = {
+    name : 'Recep'
+  }
+
+  console.log(obj.lastname ? true : false);
+
+  obj.lastname?.toLocaleLowerCase();
+
+  $: {
+    if (selectedRoom) {
+      selectedRoomSubscribe?.stop();
+
+      selectedRoomSubscribe = Meteor.subscribe("messages.list", selectedRoom._id);
+    }
   }
 </script>
 
