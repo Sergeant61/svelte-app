@@ -1,5 +1,7 @@
 <script>
   import { onDestroy } from "svelte";
+  import { beforeUpdate, afterUpdate } from 'svelte';
+
   import Messages from "/lib/collections/message.js";
   import ErrorHandler from "/lib/utils/error-handler/client/error-handler.js";
   import { Loading } from "notiflix/build/notiflix-loading-aio";
@@ -13,6 +15,8 @@
   let text = null;
   let user = null;
   let selectedRoomSubscribe = null;
+  let div;
+	let autoscroll;
 
   const sendMessageKeyup = (event) => {
     if (event.type == "keyup" && event.keyCode == 13) {
@@ -47,6 +51,14 @@
     }
   };
 
+  beforeUpdate(() => {
+		autoscroll = div && (div.offsetHeight + div.scrollTop) > (div.scrollHeight - 20);
+	});
+
+	afterUpdate(() => {
+		if (autoscroll) div.scrollTo(0, div.scrollHeight);
+	});
+
   onDestroy(() => {
     selectedRoomSubscribe?.stop();
   });
@@ -68,7 +80,7 @@
   <div class="card h-100">
     <div class="card-header">{selectedRoom.name}</div>
     <div class="card-body position-relative">
-      <div class="d-flex flex-column gap-2 p-2 position-absolute top-0 start-0 h-100 w-100 overflow-auto">
+      <div bind:this="{div}" class="d-flex flex-column gap-2 p-2 position-absolute top-0 start-0 h-100 w-100 overflow-auto">
         {#each messages as message (message._id)}
           <div class="border rounded p-2 {senseSide(message)}" style="width: 300px;">
             <div class="d-flex small">
