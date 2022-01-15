@@ -85,7 +85,7 @@
           <div class="border rounded p-2 {senseSide(message)}" style="width: 300px;">
             <div class="d-flex small">
               <div class="flex-grow-1 fw-bold">
-                {message.user().profile.firstName} {message.user().profile.lastName}
+                {message.user()?.profile?.firstName} {message.user()?.profile?.lastName}
               </div>
               <div class="flex-grow-0 text-muted">
                 {ago(message.createdAt)}

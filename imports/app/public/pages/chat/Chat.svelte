@@ -14,7 +14,7 @@
 
 <Navbar />
 
-<div class="container p-2 d-flex flex-fill flex-column ">
+<div class="container-fluid p-2 d-flex flex-fill flex-column">
   <div class="d-flex flex-fill gap-2">
     <div class="flex-grow-0 d-flex flex-column" style="width: 300px;">
       <Rooms on:onSelectedRoom={onSelectedRoom}/>
