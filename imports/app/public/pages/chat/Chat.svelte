@@ -8,7 +8,6 @@
 
   const onSelectedRoom = (data) => {
     selectedRoom = data.detail;
-    console.log(data);
   }
 
 </script>

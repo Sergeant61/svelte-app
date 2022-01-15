@@ -3,15 +3,36 @@
   import { Loading } from "notiflix/build/notiflix-loading-aio";
   import { createEventDispatcher } from "svelte";
 
+  //* COMPONENTS
+  import Pagination from "./Pagination.svelte";
+
   //* MODALS
   import RoomCreate from "../modals/room-create/RoomCreate.svelte";
 
   let rooms = [],
-    selectedRoom;
+    selectedRoom,
+    pagination = {
+      currentPage: 1,
+      pageItems: 2,
+      totalCount: 0,
+      totalPages: 0,
+    };
 
   const getRoom = () => {
+    const currentPage = pagination.currentPage;
+    const pageItems = pagination.pageItems;
+
+    const obj = {
+      options: {
+        pagination: {
+          currentPage: currentPage,
+          pageItems: pageItems,
+        },
+      },
+    };
+
     Loading.hourglass();
-    Meteor.call("room.list", {}, function (error, result) {
+    Meteor.call("room.list", obj, function (error, result) {
       Loading.remove();
       if (error) {
         ErrorHandler.show(error);
@@ -19,6 +40,10 @@
       }
 
       rooms = result.data;
+      pagination.currentPage = result.options.pagination.currentPage;
+      pagination.pageItems = result.options.pagination.pageItems;
+      pagination.totalCount = result.options.pagination.totalCount;
+      pagination.totalPages = result.options.pagination.totalPages;
     });
   };
   getRoom();
@@ -49,6 +74,7 @@
         <li on:click={selectRoom(room)} class="list-group-item brd-cursor-pointer" class:active={room._id == selectedRoom?._id}>{room.name}</li>
       {/each}
     </ul>
+    <Pagination {pagination} on:change={(ev)=> (getRoom(ev.detail))} />
   </div>
 </div>
 

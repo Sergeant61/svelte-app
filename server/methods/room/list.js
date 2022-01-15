@@ -5,12 +5,13 @@ new ValidatedMethod({
   mixins: [RoleMixin],
   roles: ['permissions.room.read'],
   validate: new SimpleSchema({
-    options: { type: QueryOptionsSchema, optional: true }
+    options: QueryOptionsSchema
   }).validator(),
   run: function (data) {
     this.unblock();
     const { options } = data
 
+    console.log(options);
     return FetchByIndex(Rooms, {}, options, null);
   }
 });

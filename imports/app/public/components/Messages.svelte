@@ -6,12 +6,25 @@
 
   export let selectedRoom;
 
+  // HELPERS
+  import ago from '../../../../lib/helper/ago.js'
+
   let messages = [];
   let text = null;
   let user = null;
   let selectedRoomSubscribe = null;
 
+  const sendMessageKeyup = (event) => {
+    if (event.type == "keyup" && event.keyCode == 13) {
+      sendMessage();
+    }
+  };
+
   const sendMessage = () => {
+    if (text.length == 0) {
+      return
+    }
+
     const obj = { message: { text: text, roomId: selectedRoom._id } };
 
     Loading.hourglass();
@@ -28,7 +41,7 @@
 
   const senseSide = (message) => {
     if (message.userId === user?._id) {
-      return "bg-gray text-white ms-auto";
+      return "bg-primary text-white ms-auto";
     } else {
       return "bg-light";
     }
@@ -43,18 +56,9 @@
     messages = Messages.find({}).fetch();
   }
 
-  const obj = {
-    name : 'Recep'
-  }
-
-  console.log(obj.lastname ? true : false);
-
-  obj.lastname?.toLocaleLowerCase();
-
   $: {
     if (selectedRoom) {
       selectedRoomSubscribe?.stop();
-
       selectedRoomSubscribe = Meteor.subscribe("messages.list", selectedRoom._id);
     }
   }
@@ -67,6 +71,14 @@
       <div class="d-flex flex-column gap-2 p-2 position-absolute top-0 start-0 h-100 w-100 overflow-auto">
         {#each messages as message (message._id)}
           <div class="border rounded p-2 {senseSide(message)}" style="width: 300px;">
+            <div class="d-flex small">
+              <div class="flex-grow-1 fw-bold">
+                {message.user().profile.firstName} {message.user().profile.lastName}
+              </div>
+              <div class="flex-grow-0 text-muted">
+                {ago(message.createdAt)}
+              </div>
+            </div>
             {message.text}
           </div>
         {/each}
@@ -75,7 +87,7 @@
 
     <div class="card-footer">
       <div class="input-group">
-        <input type="text" class="form-control" bind:value={text} placeholder="Send message" aria-label="Send message" aria-describedby="basic-addon2" />
+        <input type="text" class="form-control" bind:value={text} on:keyup={sendMessageKeyup} placeholder="Send message" />
         <span class="input-group-text brd-cursor-pointer" id="basic-addon2" on:click={sendMessage}>Send</span>
       </div>
     </div>

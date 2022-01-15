@@ -38,6 +38,7 @@ percolate:migrations
 email@2.2.0
 meteorhacks:picker
 dburles:collection-helpers
+reywood:publish-composite
 littledata:synced-cron
 # easy:search
 momentjs:moment
@@ -45,6 +46,7 @@ mizzao:user-status
 edgee:slingshot
 sakulstra:aggregate
 http
+remcoder:chronos
 
 # bordo:loading
 bordo:soft-remove
