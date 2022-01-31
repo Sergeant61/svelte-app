@@ -24,31 +24,33 @@
     "popper.js": "^1.16.1",
     "simpl-schema": "^1.10.2",
     "slugify": "^1.4.6",
-    "svelte": "3.27.0",
+    "svelte": "^3.27.0",
     "sweetalert2": "^11.1.10"
   },
   "meteor": {
     "mainModule": {
       "client": "client/main.js"
     },
-    "testModule": "tests/main.js"
+    "testModule": "tests/main.js",
+    "nodeModules": {
+      "recompile": {
+        "svelte": [
+          "legacy"
+        ]
+      }
+    }
   },
   "devDependencies": {
-    "tinro": "^0.6.8"
+    "svelte-preprocess": "^4.10.2",
+    "tinro": "^0.6.8",
+    "typescript": "^4.5.5"
   },
   "svelte:compiler": {
     "extensions": [
       "svelte",
       "html"
     ],
-    "hydratable": false,
+    "hydratable": true,
     "css": false
-  },
-  "nodeModules": {
-    "recompile": {
-      "svelte": [
-        "legacy"
-      ]
-    }
   }
 }
