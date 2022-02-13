@@ -2,6 +2,7 @@
   "name": "svelte-app",
   "private": true,
   "scripts": {
+    "svelte-check": "svelte-check",
     "start": "meteor --settings settings-local.json --port 5000",
     "test": "meteor test --once --driver-package meteortesting:mocha",
     "test-app": "TEST_WATCH=1 meteor test --full-app --driver-package meteortesting:mocha",
@@ -16,7 +17,7 @@
     "aws-sdk": "^2.909.0",
     "bcrypt": "^5.0.1",
     "body-parser": "^1.19.0",
-    "bootstrap": "^5.0.0-beta3",
+    "bootstrap": "^5.1.3",
     "chai": "^4.3.4",
     "meteor-node-stubs": "^1.1.0",
     "moment": "^2.29.1",
@@ -24,31 +25,36 @@
     "popper.js": "^1.16.1",
     "simpl-schema": "^1.10.2",
     "slugify": "^1.4.6",
-    "svelte": "3.27.0",
+    "svelte": "^3.46.2",
     "sweetalert2": "^11.1.10"
   },
   "meteor": {
     "mainModule": {
       "client": "client/main.js"
     },
-    "testModule": "tests/main.js"
+    "testModule": "tests/main.js",
+    "nodeModules": {
+      "recompile": {
+        "svelte": [
+          "legacy"
+        ]
+      }
+    }
   },
   "devDependencies": {
-    "tinro": "^0.6.8"
+    "@types/bootstrap": "^5.1.9",
+    "eslint-plugin-svelte3": "^3.4.0",
+    "svelte-check": "^2.4.3",
+    "svelte-preprocess": "^4.10.2",
+    "tinro": "^0.6.12",
+    "typescript": "^4.5.5"
   },
   "svelte:compiler": {
     "extensions": [
       "svelte",
       "html"
     ],
-    "hydratable": false,
+    "hydratable": true,
     "css": false
-  },
-  "nodeModules": {
-    "recompile": {
-      "svelte": [
-        "legacy"
-      ]
-    }
   }
 }

@@ -1,6 +1,6 @@
 <script>
-  import ErrorHandler from "/lib/utils/error-handler/client/error-handler.js";
-  import SwalUtil from "/lib/utils/swal-util/client/swal-util.js";
+  import ErrorHandler from "/lib/utils/error-handler/error-handler.js";
+  import SwalUtil from "/lib/utils/swal-util/swal-util.js";
   import { router } from "tinro";
   import { Loading } from "notiflix/build/notiflix-loading-aio";
 

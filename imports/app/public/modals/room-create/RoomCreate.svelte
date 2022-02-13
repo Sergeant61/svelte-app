@@ -1,18 +1,18 @@
 <script>
   import { onMount, createEventDispatcher } from "svelte";
 
-  import bootstrap from "bootstrap";
-  import ErrorHandler from "/lib/utils/error-handler/client/error-handler.js";
+  // import bootstrap from "bootstrap";
+  import ErrorHandler from "/lib/utils/error-handler/error-handler.js";
   import { Loading } from "notiflix/build/notiflix-loading-aio";
 
-  let modalElement, modal;
+  // let modalElement, modal;
 
-  onMount(() => {
-    modalElement = document.getElementById("brdRoomCreateModal");
-    modal = new bootstrap.Modal(modalElement);
+  // onMount(() => {
+  //   modalElement = document.getElementById("brdRoomCreateModal");
+  //   modal = new bootstrap.Modal(modalElement);
 
-    modalElement.addEventListener("hidden.bs.modal", function (event) {});
-  });
+  //   modalElement.addEventListener("hidden.bs.modal", function (event) {});
+  // });
 
   const eventDispatcher = createEventDispatcher();
 
@@ -38,7 +38,7 @@
       }
 
       eventDispatcher("onCreatedRoom", result);
-      modal.hide();
+      // modal.hide();
       event.target.reset();
     });
   };

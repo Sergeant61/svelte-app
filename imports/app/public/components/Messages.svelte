@@ -3,13 +3,13 @@
   import { beforeUpdate, afterUpdate } from 'svelte';
 
   import Messages from "/lib/collections/message.js";
-  import ErrorHandler from "/lib/utils/error-handler/client/error-handler.js";
+  import ErrorHandler from "/lib/utils/error-handler/error-handler.js";
   import { Loading } from "notiflix/build/notiflix-loading-aio";
 
   export let selectedRoom;
 
   // HELPERS
-  import ago from '../../../../lib/helper/ago.js'
+  import ago from '../../../../lib/helper/ago'
 
   let messages = [];
   let text = null;

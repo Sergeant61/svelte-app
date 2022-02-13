@@ -1,6 +1,6 @@
 <script>
   import { Meteor } from "meteor/meteor";
-  import ErrorHandler from "/lib/utils/error-handler/client/error-handler.js";
+  import ErrorHandler from "/lib/utils/error-handler/error-handler.js";
   import { Loading } from "notiflix/build/notiflix-loading-aio";
   import { router } from "tinro";
 

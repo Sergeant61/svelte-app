@@ -1,7 +1,7 @@
 <script>
-  import ErrorHandler from "/lib/utils/error-handler/client/error-handler.js";
+  import ErrorHandler from "/lib/utils/error-handler/error-handler.js";
   import Swal from "sweetalert2";
-  import { Translate } from "/lib/configs/client/i18n.js";
+  import { Translate } from "/lib/configs/i18n.js";
   import { Loading } from "notiflix/build/notiflix-loading-aio";
 
   const handleSubmit = (event) => {

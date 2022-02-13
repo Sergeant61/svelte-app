@@ -11,7 +11,7 @@
   import Navbar from "../../components/Navbar.svelte";
 
   // UTILS
-  import { count } from "../../../../../lib/utils/app-util/client/stores.js";
+  import { count } from "../../../../../lib/stores/count";
 </script>
 
 <Navbar />

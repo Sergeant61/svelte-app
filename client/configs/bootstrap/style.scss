@@ -70,13 +70,7 @@ img {
 }
 
 ::-webkit-scrollbar-track {
-  background: linear-gradient(
-    90deg,
-    rgba(199, 199, 199, 0) 0%,
-    rgba(199, 199, 199, 1) 35%,
-    rgba(199, 199, 199, 1) 65%,
-    rgba(199, 199, 199, 0) 100%
-  );
+  background: linear-gradient(90deg, rgba(199, 199, 199, 0) 0%, rgba(199, 199, 199, 1) 35%, rgba(199, 199, 199, 1) 65%, rgba(199, 199, 199, 0) 100%);
   width: 3px;
 }
 
